@@ -15,6 +15,7 @@
     <modules>
         <module>bungee-plugin</module>
         <module>common</module>
+        <module>velocity-plugin</module>
     </modules>
 
     <scm>
