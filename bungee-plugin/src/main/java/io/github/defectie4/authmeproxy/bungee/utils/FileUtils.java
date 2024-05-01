@@ -1,4 +1,4 @@
-package fr.xephi.authmebungee.utils;
+package io.github.defectie4.authmeproxy.bungee.utils;
 
 import java.io.File;
 import java.io.IOException;

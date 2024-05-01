@@ -1,6 +1,6 @@
-package fr.xephi.authmebungee.services;
+package io.github.defectie4.authmeproxy.bungee.services;
 
-import fr.xephi.authmebungee.data.AuthPlayer;
+import io.github.defectie4.authmeproxy.bungee.data.AuthPlayer;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 
 import java.util.HashMap;

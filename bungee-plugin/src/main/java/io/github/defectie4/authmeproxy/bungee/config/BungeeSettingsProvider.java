@@ -1,6 +1,6 @@
-package fr.xephi.authmebungee.config;
+package io.github.defectie4.authmeproxy.bungee.config;
 
-import fr.xephi.authmebungee.annotations.DataFolder;
+import io.github.defectie4.authmeproxy.bungee.annotations.DataFolder;
 
 import javax.inject.Inject;
 import java.io.File;

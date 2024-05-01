@@ -1,4 +1,4 @@
-package fr.xephi.authmebungee.config;
+package io.github.defectie4.authmeproxy.bungee.config;
 
 import ch.jalu.configme.SettingsHolder;
 import ch.jalu.configme.SettingsManager;

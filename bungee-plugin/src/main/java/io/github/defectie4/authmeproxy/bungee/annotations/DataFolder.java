@@ -1,4 +1,4 @@
-package fr.xephi.authmebungee.annotations;
+package io.github.defectie4.authmeproxy.bungee.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
