@@ -1,4 +1,4 @@
-package io.github.defective4.authmeproxy.bungee.config;
+package io.github.defective4.authmeproxy.common.config;
 
 import ch.jalu.configme.SettingsHolder;
 import ch.jalu.configme.SettingsManager;

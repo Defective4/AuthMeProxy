@@ -1,4 +1,4 @@
-package io.github.defective4.authmeproxy.bungee.annotations;
+package io.github.defective4.authmeproxy.common.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

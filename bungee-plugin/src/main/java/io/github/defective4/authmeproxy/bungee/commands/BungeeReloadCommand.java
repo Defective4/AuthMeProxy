@@ -2,7 +2,7 @@ package io.github.defective4.authmeproxy.bungee.commands;
 
 import ch.jalu.configme.SettingsManager;
 import ch.jalu.injector.factory.SingletonStore;
-import io.github.defective4.authmeproxy.bungee.config.SettingsDependent;
+import io.github.defective4.authmeproxy.common.config.SettingsDependent;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.chat.ComponentBuilder;

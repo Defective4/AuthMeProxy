@@ -199,22 +199,6 @@
     </repositories>
 
     <dependencies>
-        <!-- Dependency injection -->
-        <dependency>
-            <groupId>ch.jalu</groupId>
-            <artifactId>injector</artifactId>
-            <version>1.0</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <!-- Configuration library -->
-        <dependency>
-            <groupId>ch.jalu</groupId>
-            <artifactId>configme</artifactId>
-            <version>1.3.0</version>
-            <scope>compile</scope>
-        </dependency>
-
         <!-- Bungeecord API -->
         <dependency>
             <groupId>net.md-5</groupId>
@@ -229,6 +213,11 @@
             <version>1.19-R0.1-SNAPSHOT</version>
             <type>javadoc</type>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.defective4.authmeproxy</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0</version>
         </dependency>
 
         <!-- Metrics -->

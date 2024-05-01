@@ -1,6 +1,7 @@
-package io.github.defective4.authmeproxy.bungee.config;
+package io.github.defective4.authmeproxy.common.config;
 
-import io.github.defective4.authmeproxy.bungee.annotations.DataFolder;
+
+import io.github.defective4.authmeproxy.common.annotations.DataFolder;
 
 import javax.inject.Inject;
 import java.io.File;
