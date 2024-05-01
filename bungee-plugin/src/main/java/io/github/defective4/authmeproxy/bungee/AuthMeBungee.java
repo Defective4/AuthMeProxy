@@ -1,15 +1,15 @@
-package io.github.defectie4.authmeproxy.bungee;
+package io.github.defective4.authmeproxy.bungee;
 
 import ch.jalu.configme.SettingsManager;
 import ch.jalu.injector.Injector;
 import ch.jalu.injector.InjectorBuilder;
-import io.github.defectie4.authmeproxy.bungee.annotations.DataFolder;
-import io.github.defectie4.authmeproxy.bungee.commands.BungeeReloadCommand;
-import io.github.defectie4.authmeproxy.bungee.config.BungeeConfigProperties;
-import io.github.defectie4.authmeproxy.bungee.config.BungeeSettingsProvider;
-import io.github.defectie4.authmeproxy.bungee.listeners.BungeeMessageListener;
-import io.github.defectie4.authmeproxy.bungee.listeners.BungeePlayerListener;
-import io.github.defectie4.authmeproxy.bungee.services.AuthPlayerManager;
+import io.github.defective4.authmeproxy.bungee.annotations.DataFolder;
+import io.github.defective4.authmeproxy.bungee.commands.BungeeReloadCommand;
+import io.github.defective4.authmeproxy.bungee.config.BungeeConfigProperties;
+import io.github.defective4.authmeproxy.bungee.config.BungeeSettingsProvider;
+import io.github.defective4.authmeproxy.bungee.listeners.BungeeMessageListener;
+import io.github.defective4.authmeproxy.bungee.listeners.BungeePlayerListener;
+import io.github.defective4.authmeproxy.bungee.services.AuthPlayerManager;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Plugin;

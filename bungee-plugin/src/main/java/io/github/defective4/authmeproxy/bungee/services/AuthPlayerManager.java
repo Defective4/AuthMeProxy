@@ -1,6 +1,6 @@
-package io.github.defectie4.authmeproxy.bungee.services;
+package io.github.defective4.authmeproxy.bungee.services;
 
-import io.github.defectie4.authmeproxy.bungee.data.AuthPlayer;
+import io.github.defective4.authmeproxy.bungee.data.AuthPlayer;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 
 import java.util.HashMap;

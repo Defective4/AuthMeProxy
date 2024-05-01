@@ -1,12 +1,12 @@
-package io.github.defectie4.authmeproxy.bungee.listeners;
+package io.github.defective4.authmeproxy.bungee.listeners;
 
 import ch.jalu.configme.SettingsManager;
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteStreams;
-import io.github.defectie4.authmeproxy.bungee.config.BungeeConfigProperties;
-import io.github.defectie4.authmeproxy.bungee.config.SettingsDependent;
-import io.github.defectie4.authmeproxy.bungee.data.AuthPlayer;
-import io.github.defectie4.authmeproxy.bungee.services.AuthPlayerManager;
+import io.github.defective4.authmeproxy.bungee.config.BungeeConfigProperties;
+import io.github.defective4.authmeproxy.bungee.config.SettingsDependent;
+import io.github.defective4.authmeproxy.bungee.data.AuthPlayer;
+import io.github.defective4.authmeproxy.bungee.services.AuthPlayerManager;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.connection.Server;

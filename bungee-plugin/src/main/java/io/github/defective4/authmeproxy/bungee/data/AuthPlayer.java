@@ -1,4 +1,4 @@
-package io.github.defectie4.authmeproxy.bungee.data;
+package io.github.defective4.authmeproxy.bungee.data;
 
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.connection.ProxiedPlayer;

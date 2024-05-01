@@ -1,4 +1,4 @@
-package io.github.defectie4.authmeproxy.bungee.utils;
+package io.github.defective4.authmeproxy.bungee.utils;
 
 import java.io.File;
 import java.io.IOException;
