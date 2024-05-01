@@ -57,7 +57,7 @@ public class BungeeMessageListener implements Listener, SettingsDependent {
         final ByteArrayDataInput in = ByteStreams.newDataInput(event.getData());
 
         // Accept only broadcasts
-        if(!in.readUTF().equals("Forward")) {
+        if (!in.readUTF().equals("Forward")) {
             return;
         }
         in.readUTF(); // Skip ONLINE/ALL parameter

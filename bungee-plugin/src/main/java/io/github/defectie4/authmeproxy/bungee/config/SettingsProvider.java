@@ -30,8 +30,8 @@ public abstract class SettingsProvider implements Provider<SettingsManager> {
     public SettingsManager get() {
         File configFile = new File(dataFolder, "config.yml");
         return SettingsManagerBuilder.withYamlFile(configFile)
-            .useDefaultMigrationService()
-            .configurationData(properties)
-            .create();
+                                     .useDefaultMigrationService()
+                                     .configurationData(properties)
+                                     .create();
     }
 }

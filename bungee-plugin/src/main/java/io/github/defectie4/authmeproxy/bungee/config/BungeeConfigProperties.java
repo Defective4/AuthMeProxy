@@ -22,7 +22,16 @@ public class BungeeConfigProperties implements SettingsHolder {
         newProperty("commands.requireAuth", true);
     @Comment("List of commands allowed to be perform without being authenticated")
     public static final Property<List<String>> COMMANDS_WHITELIST =
-        newListProperty("commands.whitelist", "/login", "/register", "/l", "/reg", "/email", "/captcha", "/2fa", "/totp", "/log");
+        newListProperty("commands.whitelist",
+                        "/login",
+                        "/register",
+                        "/l",
+                        "/reg",
+                        "/email",
+                        "/captcha",
+                        "/2fa",
+                        "/totp",
+                        "/log");
     @Comment("Allows or not user to talk in chat if he is not logged in")
     public static final Property<Boolean> CHAT_REQUIRES_AUTH =
         newProperty("chatRequiresAuth", true);
