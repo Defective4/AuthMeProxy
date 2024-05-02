@@ -190,11 +190,6 @@
             <id>papermc</id>
             <url>https://repo.papermc.io/repository/maven-public/</url>
         </repository>
-        <!-- Bungeecord repository -->
-        <repository>
-            <id>oss-repo</id>
-            <url>https://oss.sonatype.org/content/groups/public</url>
-        </repository>
         <!-- CodeMc repository -->
         <repository>
             <id>codemc-repo</id>

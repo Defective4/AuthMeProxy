@@ -3,8 +3,8 @@ package io.github.defective4.authmeproxy.bungee.listeners;
 import ch.jalu.configme.SettingsManager;
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
-import io.github.defective4.authmeproxy.bungee.data.AuthPlayer;
-import io.github.defective4.authmeproxy.bungee.services.AuthPlayerManager;
+import io.github.defective4.authmeproxy.bungee.data.BungeeAuthPlayer;
+import io.github.defective4.authmeproxy.bungee.services.BungeeAuthPlayerManager;
 import io.github.defective4.authmeproxy.common.config.ProxyConfigProperties;
 import io.github.defective4.authmeproxy.common.config.SettingsDependent;
 import net.md_5.bungee.api.ChatColor;
@@ -23,7 +23,7 @@ import java.util.List;
 public class BungeePlayerListener implements Listener, SettingsDependent {
 
     // Services
-    private final AuthPlayerManager authPlayerManager;
+    private final BungeeAuthPlayerManager authPlayerManager;
 
     // Settings
     private boolean isAutoLoginEnabled;
@@ -36,7 +36,7 @@ public class BungeePlayerListener implements Listener, SettingsDependent {
     private boolean chatRequiresAuth;
 
     @Inject
-    public BungeePlayerListener(final SettingsManager settings, final AuthPlayerManager authPlayerManager) {
+    public BungeePlayerListener(final SettingsManager settings, final BungeeAuthPlayerManager authPlayerManager) {
         this.authPlayerManager = authPlayerManager;
         reload(settings);
     }
@@ -84,7 +84,7 @@ public class BungeePlayerListener implements Listener, SettingsDependent {
         final ProxiedPlayer player = (ProxiedPlayer) event.getSender();
 
         // Filter only unauthenticated players
-        final AuthPlayer authPlayer = authPlayerManager.getAuthPlayer(player);
+        final BungeeAuthPlayer authPlayer = authPlayerManager.getAuthPlayer(player);
         if (authPlayer != null && authPlayer.isLogged()) {
             return;
         }
@@ -113,7 +113,7 @@ public class BungeePlayerListener implements Listener, SettingsDependent {
         final ProxiedPlayer player = (ProxiedPlayer) event.getSender();
 
         // Filter only unauthenticated players
-        final AuthPlayer authPlayer = authPlayerManager.getAuthPlayer(player);
+        final BungeeAuthPlayer authPlayer = authPlayerManager.getAuthPlayer(player);
         if (authPlayer != null && authPlayer.isLogged()) {
             return;
         }
@@ -136,7 +136,7 @@ public class BungeePlayerListener implements Listener, SettingsDependent {
     public void onPlayerConnectedToServer(final ServerSwitchEvent event) {
         final ProxiedPlayer player = event.getPlayer();
         final ServerInfo server = player.getServer().getInfo();
-        final AuthPlayer authPlayer = authPlayerManager.getAuthPlayer(player);
+        final BungeeAuthPlayer authPlayer = authPlayerManager.getAuthPlayer(player);
         final boolean isAuthenticated = authPlayer != null && authPlayer.isLogged();
 
         if (isAuthenticated && isAuthServer(server)) {
@@ -158,7 +158,7 @@ public class BungeePlayerListener implements Listener, SettingsDependent {
         }
 
         final ProxiedPlayer player = event.getPlayer();
-        final AuthPlayer authPlayer = authPlayerManager.getAuthPlayer(player);
+        final BungeeAuthPlayer authPlayer = authPlayerManager.getAuthPlayer(player);
         final boolean isAuthenticated = authPlayer != null && authPlayer.isLogged();
 
         // Skip logged users

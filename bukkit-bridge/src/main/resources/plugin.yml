@@ -3,3 +3,4 @@ main: io.github.defective4.authmeproxy.bukkit.BukkitBridge
 version: 1.0
 api-version: 1.13
 author: Defective4
+depend: [ AuthMe ]

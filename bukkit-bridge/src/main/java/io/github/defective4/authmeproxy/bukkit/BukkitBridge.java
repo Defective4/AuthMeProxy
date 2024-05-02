@@ -24,10 +24,33 @@ public class BukkitBridge extends JavaPlugin implements Listener {
         Bukkit.getMessenger().registerIncomingPluginChannel(this, AUTH_CHANNEL, (channel, player, bytes) -> {
             if (AUTH_CHANNEL.equals(channel))
                 try (DataInputStream in = new DataInputStream(new ByteArrayInputStream(bytes))) {
-                    if (in.readUTF().equals("AuthMe.v2") && in.readUTF().equals("perform.login")) {
-                        Player toLogin = Bukkit.getPlayerExact(in.readUTF());
-                        if (toLogin != null) {
-                            authMe.forceLogin(toLogin);
+                    if (in.readUTF().equals("AuthMe.v2")) {
+                        String sub = in.readUTF();
+                        String name = in.readUTF();
+                        Player target = Bukkit.getPlayerExact(name);
+                        switch (sub) {
+                            case "perform.register": {
+                                if (in.readBoolean()) {
+                                    if (target != null) authMe.registerPlayer(target.getName(), in.readUTF());
+                                    else authMe.registerPlayer(name, in.readUTF());
+                                }
+                                break;
+                            }
+                            case "perform.logout": {
+                                if (target != null) authMe.forceLogout(target);
+                                break;
+                            }
+                            case "perform.unregister": {
+                                if (target != null) authMe.forceUnregister(target);
+                                else authMe.forceUnregister(name);
+                                break;
+                            }
+                            case "perform.login": {
+                                if (target != null) authMe.forceLogin(target);
+                                break;
+                            }
+                            default:
+                                break;
                         }
                     }
                 } catch (Exception e) {

@@ -10,22 +10,22 @@ import com.velocitypowered.api.proxy.ServerConnection;
 import io.github.defective4.authmeproxy.common.config.ProxyConfigProperties;
 import io.github.defective4.authmeproxy.common.config.SettingsDependent;
 import io.github.defective4.authmeproxy.velocity.AuthMeVelocity;
-import io.github.defective4.authmeproxy.velocity.data.AuthPlayer;
-import io.github.defective4.authmeproxy.velocity.services.AuthPlayerManager;
+import io.github.defective4.authmeproxy.velocity.data.VelocityAuthPlayer;
+import io.github.defective4.authmeproxy.velocity.services.VelocityAuthPlayerManager;
 
 import javax.inject.Inject;
 
 public class VelocityMessageListener implements SettingsDependent {
 
     // Services
-    private final AuthPlayerManager authPlayerManager;
+    private final VelocityAuthPlayerManager authPlayerManager;
 
     // Settings
     private boolean isSendOnLogoutEnabled;
     private String sendOnLogoutTarget;
 
     @Inject
-    public VelocityMessageListener(final SettingsManager settings, final AuthPlayerManager authPlayerManager) {
+    public VelocityMessageListener(final SettingsManager settings, final VelocityAuthPlayerManager authPlayerManager) {
         this.authPlayerManager = authPlayerManager;
         reload(settings);
     }
@@ -78,7 +78,7 @@ public class VelocityMessageListener implements SettingsDependent {
 
     private void handleOnLogin(final ByteArrayDataInput in) {
         final String name = in.readUTF();
-        final AuthPlayer authPlayer = authPlayerManager.getAuthPlayer(name);
+        final VelocityAuthPlayer authPlayer = authPlayerManager.getAuthPlayer(name);
         if (authPlayer != null) {
             authPlayer.setLogged(true);
         }
@@ -86,7 +86,7 @@ public class VelocityMessageListener implements SettingsDependent {
 
     private void handleOnLogout(final ByteArrayDataInput in) {
         final String name = in.readUTF();
-        final AuthPlayer authPlayer = authPlayerManager.getAuthPlayer(name);
+        final VelocityAuthPlayer authPlayer = authPlayerManager.getAuthPlayer(name);
         if (authPlayer != null) {
             authPlayer.setLogged(false);
             if (isSendOnLogoutEnabled) {

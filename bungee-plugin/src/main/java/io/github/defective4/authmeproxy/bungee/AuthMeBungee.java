@@ -6,7 +6,7 @@ import ch.jalu.injector.InjectorBuilder;
 import io.github.defective4.authmeproxy.bungee.commands.BungeeReloadCommand;
 import io.github.defective4.authmeproxy.bungee.listeners.BungeeMessageListener;
 import io.github.defective4.authmeproxy.bungee.listeners.BungeePlayerListener;
-import io.github.defective4.authmeproxy.bungee.services.AuthPlayerManager;
+import io.github.defective4.authmeproxy.bungee.services.BungeeAuthPlayerManager;
 import io.github.defective4.authmeproxy.common.annotations.DataFolder;
 import io.github.defective4.authmeproxy.common.config.ProxyConfigProperties;
 import io.github.defective4.authmeproxy.common.config.ProxySettingsProvider;
@@ -21,22 +21,32 @@ import java.util.logging.Logger;
 
 public class AuthMeBungee extends Plugin {
 
+    private static AuthMeBungee INSTANCE;
     // Instances
     private Injector injector;
     private SettingsManager settings;
-    private AuthPlayerManager authPlayerManager;
+    private BungeeAuthPlayerManager authPlayerManager;
 
     public AuthMeBungee() {
     }
 
+    public AuthMeBungee getInstance() {
+        return INSTANCE;
+    }
+
+    public BungeeAuthPlayerManager getAuthPlayerManager() {
+        return authPlayerManager;
+    }
+
     @Override
     public void onEnable() {
+        INSTANCE = this;
         // Prepare the injector and register stuff
         setupInjector();
 
         // Get singletons from the injector
         settings = injector.getSingleton(SettingsManager.class);
-        authPlayerManager = injector.getSingleton(AuthPlayerManager.class);
+        authPlayerManager = injector.getSingleton(BungeeAuthPlayerManager.class);
 
         // Print some config information
         getLogger().info("Current auth servers:");

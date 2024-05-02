@@ -19,7 +19,7 @@ import io.github.defective4.authmeproxy.common.config.ProxySettingsProvider;
 import io.github.defective4.authmeproxy.velocity.commands.VelocityReloadCommand;
 import io.github.defective4.authmeproxy.velocity.listeners.VelocityMessageListener;
 import io.github.defective4.authmeproxy.velocity.listeners.VelocityPlayerListener;
-import io.github.defective4.authmeproxy.velocity.services.AuthPlayerManager;
+import io.github.defective4.authmeproxy.velocity.services.VelocityAuthPlayerManager;
 import org.bstats.velocity.Metrics;
 import org.slf4j.Logger;
 
@@ -39,7 +39,7 @@ public class AuthMeVelocity {
     // Instances
     private Injector injector;
     private SettingsManager settings;
-    private AuthPlayerManager authPlayerManager;
+    private VelocityAuthPlayerManager authPlayerManager;
 
     @Inject
     public AuthMeVelocity(
@@ -61,6 +61,10 @@ public class AuthMeVelocity {
         return staticServer;
     }
 
+    public VelocityAuthPlayerManager getAuthPlayerManager() {
+        return authPlayerManager;
+    }
+
     public ProxyServer getProxy() {
         return proxy;
     }
@@ -76,7 +80,7 @@ public class AuthMeVelocity {
 
         // Get singletons from the injector
         settings = injector.getSingleton(SettingsManager.class);
-        authPlayerManager = injector.getSingleton(AuthPlayerManager.class);
+        authPlayerManager = injector.getSingleton(VelocityAuthPlayerManager.class);
 
         // Print some config information
         getLogger().info("Current auth servers:");

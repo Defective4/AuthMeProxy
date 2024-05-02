@@ -17,8 +17,8 @@ import com.velocitypowered.api.proxy.messages.MinecraftChannelIdentifier;
 import com.velocitypowered.api.proxy.server.ServerInfo;
 import io.github.defective4.authmeproxy.common.config.ProxyConfigProperties;
 import io.github.defective4.authmeproxy.common.config.SettingsDependent;
-import io.github.defective4.authmeproxy.velocity.data.AuthPlayer;
-import io.github.defective4.authmeproxy.velocity.services.AuthPlayerManager;
+import io.github.defective4.authmeproxy.velocity.data.VelocityAuthPlayer;
+import io.github.defective4.authmeproxy.velocity.services.VelocityAuthPlayerManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 
@@ -30,7 +30,7 @@ import java.util.Optional;
 public class VelocityPlayerListener implements SettingsDependent {
 
     // Services
-    private final AuthPlayerManager authPlayerManager;
+    private final VelocityAuthPlayerManager authPlayerManager;
 
     // Settings
     private boolean isAutoLoginEnabled;
@@ -43,7 +43,7 @@ public class VelocityPlayerListener implements SettingsDependent {
     private boolean chatRequiresAuth;
 
     @Inject
-    public VelocityPlayerListener(final SettingsManager settings, final AuthPlayerManager authPlayerManager) {
+    public VelocityPlayerListener(final SettingsManager settings, final VelocityAuthPlayerManager authPlayerManager) {
         this.authPlayerManager = authPlayerManager;
         reload(settings);
     }
@@ -90,7 +90,7 @@ public class VelocityPlayerListener implements SettingsDependent {
         }
 
         // Filter only unauthenticated players
-        final AuthPlayer authPlayer = authPlayerManager.getAuthPlayer(player);
+        final VelocityAuthPlayer authPlayer = authPlayerManager.getAuthPlayer(player);
         if (authPlayer != null && authPlayer.isLogged()) {
             return;
         }
@@ -117,7 +117,7 @@ public class VelocityPlayerListener implements SettingsDependent {
         final Player player = event.getPlayer();
 
         // Filter only unauthenticated players
-        final AuthPlayer authPlayer = authPlayerManager.getAuthPlayer(player);
+        final VelocityAuthPlayer authPlayer = authPlayerManager.getAuthPlayer(player);
         if (authPlayer != null && authPlayer.isLogged()) {
             return;
         }
@@ -144,7 +144,7 @@ public class VelocityPlayerListener implements SettingsDependent {
         final Optional<ServerConnection> serverOP = player.getCurrentServer();
         if (serverOP.isEmpty()) return;
         ServerConnection server = serverOP.get();
-        final AuthPlayer authPlayer = authPlayerManager.getAuthPlayer(player);
+        final VelocityAuthPlayer authPlayer = authPlayerManager.getAuthPlayer(player);
         final boolean isAuthenticated = authPlayer != null && authPlayer.isLogged();
 
         if (isAuthenticated && isAuthServer(server.getServerInfo())) {
@@ -166,7 +166,7 @@ public class VelocityPlayerListener implements SettingsDependent {
         }
 
         final Player player = event.getPlayer();
-        final AuthPlayer authPlayer = authPlayerManager.getAuthPlayer(player);
+        final VelocityAuthPlayer authPlayer = authPlayerManager.getAuthPlayer(player);
         final boolean isAuthenticated = authPlayer != null && authPlayer.isLogged();
 
         // Skip logged users

@@ -3,8 +3,8 @@ package io.github.defective4.authmeproxy.bungee.listeners;
 import ch.jalu.configme.SettingsManager;
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteStreams;
-import io.github.defective4.authmeproxy.bungee.data.AuthPlayer;
-import io.github.defective4.authmeproxy.bungee.services.AuthPlayerManager;
+import io.github.defective4.authmeproxy.bungee.data.BungeeAuthPlayer;
+import io.github.defective4.authmeproxy.bungee.services.BungeeAuthPlayerManager;
 import io.github.defective4.authmeproxy.common.config.ProxyConfigProperties;
 import io.github.defective4.authmeproxy.common.config.SettingsDependent;
 import net.md_5.bungee.api.ProxyServer;
@@ -19,14 +19,14 @@ import javax.inject.Inject;
 public class BungeeMessageListener implements Listener, SettingsDependent {
 
     // Services
-    private final AuthPlayerManager authPlayerManager;
+    private final BungeeAuthPlayerManager authPlayerManager;
 
     // Settings
     private boolean isSendOnLogoutEnabled;
     private String sendOnLogoutTarget;
 
     @Inject
-    public BungeeMessageListener(final SettingsManager settings, final AuthPlayerManager authPlayerManager) {
+    public BungeeMessageListener(final SettingsManager settings, final BungeeAuthPlayerManager authPlayerManager) {
         this.authPlayerManager = authPlayerManager;
         reload(settings);
     }
@@ -87,7 +87,7 @@ public class BungeeMessageListener implements Listener, SettingsDependent {
 
     private void handleOnLogin(final ByteArrayDataInput in) {
         final String name = in.readUTF();
-        final AuthPlayer authPlayer = authPlayerManager.getAuthPlayer(name);
+        final BungeeAuthPlayer authPlayer = authPlayerManager.getAuthPlayer(name);
         if (authPlayer != null) {
             authPlayer.setLogged(true);
         }
@@ -95,7 +95,7 @@ public class BungeeMessageListener implements Listener, SettingsDependent {
 
     private void handleOnLogout(final ByteArrayDataInput in) {
         final String name = in.readUTF();
-        final AuthPlayer authPlayer = authPlayerManager.getAuthPlayer(name);
+        final BungeeAuthPlayer authPlayer = authPlayerManager.getAuthPlayer(name);
         if (authPlayer != null) {
             authPlayer.setLogged(false);
             if (isSendOnLogoutEnabled) {
