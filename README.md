@@ -5,6 +5,7 @@ Brings AuthMe support for your BungeeCord **and** Velocity servers!
 * [About](#about)
 * [Support](#support)
 * [Requirements](#requirements)
+* Downloads (*Soon*)
 * [Installation](#installation)
 
 ## About
