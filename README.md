@@ -1,6 +1,14 @@
 # AuthMeProxy
+Brings AuthMe support for your BungeeCord **and** Velocity servers!
 
-This is a fork of [AuthMeBungee](https://github.com/AuthMe/AuthMeBungee) with added support for Velocity proxy software.
+## Content
+* [About](https://github.com/Defective4/AuthMeProxy#about)
+* [Support](https://github.com/Defective4/AuthMeProxy#support)
+* [Requirements](https://github.com/Defective4/AuthMeProxy#requirements)
+* [Installation](https://github.com/Defective4/AuthMeProxy#installation)
+
+## About
+This is a fork of [AuthMeBungee](https://github.com/AuthMe/AuthMeBungee) with added support for [Velocity](https://papermc.io/software/velocity) proxy software.
 
 *Description copied from AuthMeBungee's README*
 > This plugin acts like a bridge between your bukkit servers and your BungeeCord instance. To explain simple how it works, bukkit-side plugins send a message to bungee-side on user authentication. If bungee-side doesn't receive this message, the player won't be able to talk in chat and to perform commands, including BungeeCord commands.  
