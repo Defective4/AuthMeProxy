@@ -186,6 +186,10 @@
     </build>
 
     <repositories>
+        <repository>
+            <id>papermc</id>
+            <url>https://repo.papermc.io/repository/maven-public/</url>
+        </repository>
         <!-- Bungeecord repository -->
         <repository>
             <id>oss-repo</id>
