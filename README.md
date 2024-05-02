@@ -5,11 +5,12 @@ Brings AuthMe support to your BungeeCord **and** Velocity servers!
 ## Content
 
 * [About](#about)
+* [Changes from AuthMeBungee](#changes-from-authmebungee)
 * [Support](#support)
 * [Requirements](#requirements)
 * Downloads (*Soon*)
 * [Installation](#installation)
-* API (*Soon*)
+* [API](#api) (*Soon*)
 
 ## About
 
@@ -36,6 +37,9 @@ This includes:
 - [x] Force logout
 - [x] Unregistering players
 - [x] Registering players
+
+> [!TIP]
+> For player operations to work at least one player has to be online on the target server.
 
 ## Support
 
