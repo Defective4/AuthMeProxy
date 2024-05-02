@@ -5,7 +5,7 @@ import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteStreams;
 import io.github.defective4.authmeproxy.bungee.data.AuthPlayer;
 import io.github.defective4.authmeproxy.bungee.services.AuthPlayerManager;
-import io.github.defective4.authmeproxy.common.config.BungeeConfigProperties;
+import io.github.defective4.authmeproxy.common.config.ProxyConfigProperties;
 import io.github.defective4.authmeproxy.common.config.SettingsDependent;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
@@ -33,8 +33,8 @@ public class BungeeMessageListener implements Listener, SettingsDependent {
 
     @Override
     public void reload(final SettingsManager settings) {
-        isSendOnLogoutEnabled = settings.getProperty(BungeeConfigProperties.ENABLE_SEND_ON_LOGOUT);
-        sendOnLogoutTarget = settings.getProperty(BungeeConfigProperties.SEND_ON_LOGOUT_TARGET);
+        isSendOnLogoutEnabled = settings.getProperty(ProxyConfigProperties.ENABLE_SEND_ON_LOGOUT);
+        sendOnLogoutTarget = settings.getProperty(ProxyConfigProperties.SEND_ON_LOGOUT_TARGET);
     }
 
     @EventHandler

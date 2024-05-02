@@ -7,7 +7,7 @@ import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.connection.PluginMessageEvent;
 import com.velocitypowered.api.proxy.Player;
 import com.velocitypowered.api.proxy.ServerConnection;
-import io.github.defective4.authmeproxy.common.config.BungeeConfigProperties;
+import io.github.defective4.authmeproxy.common.config.ProxyConfigProperties;
 import io.github.defective4.authmeproxy.common.config.SettingsDependent;
 import io.github.defective4.authmeproxy.velocity.AuthMeVelocity;
 import io.github.defective4.authmeproxy.velocity.data.AuthPlayer;
@@ -15,7 +15,7 @@ import io.github.defective4.authmeproxy.velocity.services.AuthPlayerManager;
 
 import javax.inject.Inject;
 
-public class BungeeMessageListener implements SettingsDependent {
+public class VelocityMessageListener implements SettingsDependent {
 
     // Services
     private final AuthPlayerManager authPlayerManager;
@@ -25,15 +25,15 @@ public class BungeeMessageListener implements SettingsDependent {
     private String sendOnLogoutTarget;
 
     @Inject
-    public BungeeMessageListener(final SettingsManager settings, final AuthPlayerManager authPlayerManager) {
+    public VelocityMessageListener(final SettingsManager settings, final AuthPlayerManager authPlayerManager) {
         this.authPlayerManager = authPlayerManager;
         reload(settings);
     }
 
     @Override
     public void reload(final SettingsManager settings) {
-        isSendOnLogoutEnabled = settings.getProperty(BungeeConfigProperties.ENABLE_SEND_ON_LOGOUT);
-        sendOnLogoutTarget = settings.getProperty(BungeeConfigProperties.SEND_ON_LOGOUT_TARGET);
+        isSendOnLogoutEnabled = settings.getProperty(ProxyConfigProperties.ENABLE_SEND_ON_LOGOUT);
+        sendOnLogoutTarget = settings.getProperty(ProxyConfigProperties.SEND_ON_LOGOUT_TARGET);
     }
 
     @Subscribe

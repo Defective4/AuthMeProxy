@@ -8,8 +8,8 @@ import io.github.defective4.authmeproxy.bungee.listeners.BungeeMessageListener;
 import io.github.defective4.authmeproxy.bungee.listeners.BungeePlayerListener;
 import io.github.defective4.authmeproxy.bungee.services.AuthPlayerManager;
 import io.github.defective4.authmeproxy.common.annotations.DataFolder;
-import io.github.defective4.authmeproxy.common.config.BungeeConfigProperties;
-import io.github.defective4.authmeproxy.common.config.BungeeSettingsProvider;
+import io.github.defective4.authmeproxy.common.config.ProxyConfigProperties;
+import io.github.defective4.authmeproxy.common.config.ProxySettingsProvider;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Plugin;
@@ -40,7 +40,7 @@ public class AuthMeBungee extends Plugin {
 
         // Print some config information
         getLogger().info("Current auth servers:");
-        for (String authServer : settings.getProperty(BungeeConfigProperties.AUTH_SERVERS)) {
+        for (String authServer : settings.getProperty(ProxyConfigProperties.AUTH_SERVERS)) {
             getLogger().info("> " + authServer.toLowerCase());
         }
 
@@ -57,7 +57,7 @@ public class AuthMeBungee extends Plugin {
         getProxy().getPluginManager().registerListener(this, injector.getSingleton(BungeePlayerListener.class));
 
         // Send metrics data
-        new Metrics(this, 1880);
+        new Metrics(this, 21778);
     }
 
     private void setupInjector() {
@@ -69,7 +69,7 @@ public class AuthMeBungee extends Plugin {
         injector.register(PluginManager.class, getProxy().getPluginManager());
         injector.register(TaskScheduler.class, getProxy().getScheduler());
         injector.provide(DataFolder.class, getDataFolder());
-        injector.registerProvider(SettingsManager.class, BungeeSettingsProvider.class);
+        injector.registerProvider(SettingsManager.class, ProxySettingsProvider.class);
     }
 
 }

@@ -6,11 +6,11 @@ import io.github.defective4.authmeproxy.common.annotations.DataFolder;
 import javax.inject.Inject;
 import java.io.File;
 
-public class BungeeSettingsProvider extends SettingsProvider {
+public class ProxySettingsProvider extends SettingsProvider {
 
     @Inject
-    public BungeeSettingsProvider(@DataFolder File dataFolder) {
-        super(dataFolder, BungeeConfigProperties.class);
+    public ProxySettingsProvider(@DataFolder File dataFolder) {
+        super(dataFolder, ProxyConfigProperties.class);
     }
 
 }

@@ -9,7 +9,7 @@ import java.util.List;
 import static ch.jalu.configme.properties.PropertyInitializer.newListProperty;
 import static ch.jalu.configme.properties.PropertyInitializer.newProperty;
 
-public class BungeeConfigProperties implements SettingsHolder {
+public class ProxyConfigProperties implements SettingsHolder {
 
     @Comment("List of servers in the network where authme is installed")
     public static final Property<List<String>> AUTH_SERVERS =
@@ -50,7 +50,7 @@ public class BungeeConfigProperties implements SettingsHolder {
     public static final Property<String> SEND_ON_LOGOUT_TARGET =
         newProperty("unloggedUserServer", "");
 
-    private BungeeConfigProperties() {
+    private ProxyConfigProperties() {
     }
 
 }

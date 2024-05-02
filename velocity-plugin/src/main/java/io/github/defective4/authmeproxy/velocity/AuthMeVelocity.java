@@ -14,12 +14,13 @@ import com.velocitypowered.api.proxy.Player;
 import com.velocitypowered.api.proxy.ProxyServer;
 import com.velocitypowered.api.proxy.messages.MinecraftChannelIdentifier;
 import io.github.defective4.authmeproxy.common.annotations.DataFolder;
-import io.github.defective4.authmeproxy.common.config.BungeeConfigProperties;
-import io.github.defective4.authmeproxy.common.config.BungeeSettingsProvider;
-import io.github.defective4.authmeproxy.velocity.commands.BungeeReloadCommand;
-import io.github.defective4.authmeproxy.velocity.listeners.BungeeMessageListener;
-import io.github.defective4.authmeproxy.velocity.listeners.BungeePlayerListener;
+import io.github.defective4.authmeproxy.common.config.ProxyConfigProperties;
+import io.github.defective4.authmeproxy.common.config.ProxySettingsProvider;
+import io.github.defective4.authmeproxy.velocity.commands.VelocityReloadCommand;
+import io.github.defective4.authmeproxy.velocity.listeners.VelocityMessageListener;
+import io.github.defective4.authmeproxy.velocity.listeners.VelocityPlayerListener;
 import io.github.defective4.authmeproxy.velocity.services.AuthPlayerManager;
+import org.bstats.velocity.Metrics;
 import org.slf4j.Logger;
 
 import java.io.File;
@@ -34,13 +35,17 @@ public class AuthMeVelocity {
     private final Logger logger;
     private final ProxyServer proxy;
     private final File dataFolder;
+    private final Metrics.Factory metricsFactory;
     // Instances
     private Injector injector;
     private SettingsManager settings;
     private AuthPlayerManager authPlayerManager;
 
     @Inject
-    public AuthMeVelocity(Logger logger, ProxyServer proxy, @DataDirectory Path dataPath) {
+    public AuthMeVelocity(
+        Logger logger, ProxyServer proxy, @DataDirectory Path dataPath, Metrics.Factory metricsFactory
+    ) {
+        this.metricsFactory = metricsFactory;
         INSTANCE = this;
         this.logger = logger;
         this.proxy = proxy;
@@ -75,7 +80,7 @@ public class AuthMeVelocity {
 
         // Print some config information
         getLogger().info("Current auth servers:");
-        for (String authServer : settings.getProperty(BungeeConfigProperties.AUTH_SERVERS)) {
+        for (String authServer : settings.getProperty(ProxyConfigProperties.AUTH_SERVERS)) {
             getLogger().info("> " + authServer.toLowerCase());
         }
 
@@ -87,15 +92,15 @@ public class AuthMeVelocity {
         CommandManager commandManager = getProxy().getCommandManager();
         // Register commands
         commandManager.register(commandManager.metaBuilder("abreloadproxy").plugin(this).build(),
-                                injector.getSingleton(BungeeReloadCommand.class));
+                                injector.getSingleton(VelocityReloadCommand.class));
 
         // Registering event listeners
-        getProxy().getEventManager().register(this, injector.getSingleton(BungeeMessageListener.class));
-        getProxy().getEventManager().register(this, injector.getSingleton(BungeePlayerListener.class));
+        getProxy().getEventManager().register(this, injector.getSingleton(VelocityMessageListener.class));
+        getProxy().getEventManager().register(this, injector.getSingleton(VelocityPlayerListener.class));
 
         getProxy().getChannelRegistrar().register(MinecraftChannelIdentifier.from("authme:internal"));
         // Send metrics data
-        //        new Metrics(this, 1880);
+        metricsFactory.make(this, 21777);
     }
 
     public File getDataFolder() {
@@ -111,7 +116,7 @@ public class AuthMeVelocity {
         injector.register(PluginManager.class, getProxy().getPluginManager());
         //        injector.register(TaskScheduler.class, getProxy().getScheduler());
         injector.provide(DataFolder.class, getDataFolder());
-        injector.registerProvider(SettingsManager.class, BungeeSettingsProvider.class);
+        injector.registerProvider(SettingsManager.class, ProxySettingsProvider.class);
     }
 
 }

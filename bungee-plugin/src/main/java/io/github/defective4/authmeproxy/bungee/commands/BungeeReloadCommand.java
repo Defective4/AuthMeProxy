@@ -27,7 +27,7 @@ public class BungeeReloadCommand extends Command {
         settings.reload();
         settingsDependentStore.retrieveAllOfType().forEach(settingsDependent -> settingsDependent.reload(settings));
         commandSender.sendMessage(
-            new ComponentBuilder("AuthMeBungee configuration reloaded!").color(ChatColor.GREEN).create()
+            new ComponentBuilder("AuthMeProxy configuration reloaded!").color(ChatColor.GREEN).create()
         );
     }
 }

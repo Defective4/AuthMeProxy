@@ -10,13 +10,13 @@ import net.kyori.adventure.text.format.NamedTextColor;
 
 import javax.inject.Inject;
 
-public class BungeeReloadCommand implements SimpleCommand {
+public class VelocityReloadCommand implements SimpleCommand {
 
     private SettingsManager settings;
     private SingletonStore<SettingsDependent> settingsDependentStore;
 
     @Inject
-    public BungeeReloadCommand(SettingsManager settings, SingletonStore<SettingsDependent> settingsDependentStore) {
+    public VelocityReloadCommand(SettingsManager settings, SingletonStore<SettingsDependent> settingsDependentStore) {
         this.settings = settings;
         this.settingsDependentStore = settingsDependentStore;
     }
@@ -26,7 +26,7 @@ public class BungeeReloadCommand implements SimpleCommand {
         CommandSource commandSender = invocation.source();
         settings.reload();
         settingsDependentStore.retrieveAllOfType().forEach(settingsDependent -> settingsDependent.reload(settings));
-        commandSender.sendMessage(Component.text("AuthMeBungee configuration reloaded!").color(NamedTextColor.GREEN));
+        commandSender.sendMessage(Component.text("AuthMeProxy configuration reloaded!").color(NamedTextColor.GREEN));
     }
 
     @Override

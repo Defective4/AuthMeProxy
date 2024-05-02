@@ -119,27 +119,27 @@
                     <relocations>
                         <relocation>
                             <pattern>javax.annotation</pattern>
-                            <shadedPattern>fr.xephi.authmebungee.libs.javax.annotation</shadedPattern>
+                            <shadedPattern>io.github.defective4.authmeproxy.libs.javax.annotation</shadedPattern>
                         </relocation>
                         <relocation>
                             <pattern>javax.inject</pattern>
-                            <shadedPattern>fr.xephi.authmebungee.libs.javax.inject</shadedPattern>
+                            <shadedPattern>io.github.defective4.authmeproxy.libs.javax.inject</shadedPattern>
                         </relocation>
                         <relocation>
                             <pattern>ch.jalu.injector</pattern>
-                            <shadedPattern>fr.xephi.authmebungee.libs.jalu.injector</shadedPattern>
+                            <shadedPattern>io.github.defective4.authmeproxy.libs.jalu.injector</shadedPattern>
                         </relocation>
                         <relocation>
                             <pattern>org.yaml.snakeyaml</pattern>
-                            <shadedPattern>fr.xephi.authmebungee.libs.yaml.snakeyaml</shadedPattern>
+                            <shadedPattern>io.github.defective4.authmeproxy.libs.yaml.snakeyaml</shadedPattern>
                         </relocation>
                         <relocation>
                             <pattern>ch.jalu.configme</pattern>
-                            <shadedPattern>fr.xephi.authmebungee.libs.jalu.configme</shadedPattern>
+                            <shadedPattern>io.github.defective4.authmeproxy.libs.jalu.configme</shadedPattern>
                         </relocation>
                         <relocation>
                             <pattern>org.bstats</pattern>
-                            <shadedPattern>fr.xephi.authmebungee.libs.org.bstats</shadedPattern>
+                            <shadedPattern>io.github.defective4.authmeproxy.libs.org.bstats</shadedPattern>
                         </relocation>
                     </relocations>
 

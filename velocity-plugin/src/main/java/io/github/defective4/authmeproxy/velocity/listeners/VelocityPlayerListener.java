@@ -15,7 +15,7 @@ import com.velocitypowered.api.proxy.Player;
 import com.velocitypowered.api.proxy.ServerConnection;
 import com.velocitypowered.api.proxy.messages.MinecraftChannelIdentifier;
 import com.velocitypowered.api.proxy.server.ServerInfo;
-import io.github.defective4.authmeproxy.common.config.BungeeConfigProperties;
+import io.github.defective4.authmeproxy.common.config.ProxyConfigProperties;
 import io.github.defective4.authmeproxy.common.config.SettingsDependent;
 import io.github.defective4.authmeproxy.velocity.data.AuthPlayer;
 import io.github.defective4.authmeproxy.velocity.services.AuthPlayerManager;
@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class BungeePlayerListener implements SettingsDependent {
+public class VelocityPlayerListener implements SettingsDependent {
 
     // Services
     private final AuthPlayerManager authPlayerManager;
@@ -43,27 +43,27 @@ public class BungeePlayerListener implements SettingsDependent {
     private boolean chatRequiresAuth;
 
     @Inject
-    public BungeePlayerListener(final SettingsManager settings, final AuthPlayerManager authPlayerManager) {
+    public VelocityPlayerListener(final SettingsManager settings, final AuthPlayerManager authPlayerManager) {
         this.authPlayerManager = authPlayerManager;
         reload(settings);
     }
 
     @Override
     public void reload(final SettingsManager settings) {
-        isAutoLoginEnabled = settings.getProperty(BungeeConfigProperties.AUTOLOGIN);
-        isServerSwitchRequiresAuth = settings.getProperty(BungeeConfigProperties.SERVER_SWITCH_REQUIRES_AUTH);
-        requiresAuthKickMessage = settings.getProperty(BungeeConfigProperties.SERVER_SWITCH_KICK_MESSAGE);
+        isAutoLoginEnabled = settings.getProperty(ProxyConfigProperties.AUTOLOGIN);
+        isServerSwitchRequiresAuth = settings.getProperty(ProxyConfigProperties.SERVER_SWITCH_REQUIRES_AUTH);
+        requiresAuthKickMessage = settings.getProperty(ProxyConfigProperties.SERVER_SWITCH_KICK_MESSAGE);
         authServers = new ArrayList<>();
-        for (final String server : settings.getProperty(BungeeConfigProperties.AUTH_SERVERS)) {
+        for (final String server : settings.getProperty(ProxyConfigProperties.AUTH_SERVERS)) {
             authServers.add(server.toLowerCase());
         }
-        allServersAreAuthServers = settings.getProperty(BungeeConfigProperties.ALL_SERVERS_ARE_AUTH_SERVERS);
-        isCommandsRequireAuth = settings.getProperty(BungeeConfigProperties.COMMANDS_REQUIRE_AUTH);
+        allServersAreAuthServers = settings.getProperty(ProxyConfigProperties.ALL_SERVERS_ARE_AUTH_SERVERS);
+        isCommandsRequireAuth = settings.getProperty(ProxyConfigProperties.COMMANDS_REQUIRE_AUTH);
         commandWhitelist = new ArrayList<>();
-        for (final String command : settings.getProperty(BungeeConfigProperties.COMMANDS_WHITELIST)) {
+        for (final String command : settings.getProperty(ProxyConfigProperties.COMMANDS_WHITELIST)) {
             commandWhitelist.add(command.toLowerCase());
         }
-        chatRequiresAuth = settings.getProperty(BungeeConfigProperties.CHAT_REQUIRES_AUTH);
+        chatRequiresAuth = settings.getProperty(ProxyConfigProperties.CHAT_REQUIRES_AUTH);
     }
 
     @Subscribe
