@@ -9,6 +9,7 @@ Brings AuthMe support to your BungeeCord **and** Velocity servers!
 * [Requirements](#requirements)
 * Downloads (*Soon*)
 * [Installation](#installation)
+* API (*Soon*)
 
 ## About
 
@@ -22,6 +23,19 @@ for [Velocity](https://papermc.io/software/velocity) proxy software.
 >
 > **AutoLogin:** If you have AuthMe on multiple servers, you can enable autoLogin option that allow you to switch
 > between your servers without having to perform login command again.
+
+## Changes from AuthMeBungee
+
+AuthMeProxy includes support for both BungeeCord forks and Velocity,  
+unlike AuthMeBungee, which is compatible only with BungeeCord.  
+Additionally, AuthMeProxy contains a simple developer API, allowing you to interact with the backend player directly
+from proxy.
+This includes:
+
+- [x] Force login
+- [x] Force logout
+- [x] Unregistering players
+- [x] Registering players
 
 ## Support
 
@@ -68,8 +82,12 @@ Velocity installation requires installing the core plugin on your Velocity serve
 3. Download AuthMe-Velocity-Bridge-`x.x`.jar
 4. Copy *AuthMe-Velocity-Bridge-`x.x`.jar* to all auth servers' plugins folder
 5. Restart both Velocity and all auth servers
-5. Configure the plugin **(don't forget to config authServers)**
-6. Enable the **Hooks.bungeecord** option in your **AuthMeReloaded config file**
-7. Enjoy!
+6. Configure the plugin **(don't forget to config authServers)**
+7. Enable the **Hooks.bungeecord** option in your **AuthMeReloaded config file**
+8. Enjoy!
 
 **Please follow these steps and configure the plugin before saying it doesn't work!**
+
+## API
+
+*This section is Work in Progress*
