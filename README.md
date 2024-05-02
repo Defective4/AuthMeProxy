@@ -2,10 +2,10 @@
 Brings AuthMe support for your BungeeCord **and** Velocity servers!
 
 ## Content
-* [About](https://github.com/Defective4/AuthMeProxy#about)
-* [Support](https://github.com/Defective4/AuthMeProxy#support)
-* [Requirements](https://github.com/Defective4/AuthMeProxy#requirements)
-* [Installation](https://github.com/Defective4/AuthMeProxy#installation)
+* [About](#about)
+* [Support](#support)
+* [Requirements](#requirements)
+* [Installation](#installation)
 
 ## About
 This is a fork of [AuthMeBungee](https://github.com/AuthMe/AuthMeBungee) with added support for [Velocity](https://papermc.io/software/velocity) proxy software.
