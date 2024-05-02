@@ -1,5 +1,5 @@
 # AuthMeProxy
-Brings AuthMe support for your BungeeCord **and** Velocity servers!
+Brings AuthMe support to your BungeeCord **and** Velocity servers!
 
 ## Content
 * [About](#about)
