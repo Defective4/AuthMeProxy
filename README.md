@@ -19,7 +19,9 @@ This is a fork of [AuthMeBungee](https://github.com/AuthMe/AuthMeBungee) with ad
 ## Support
 - [GitHub issue tracker](https://github.com/Defective4/AuthMeProxy/issues)
 - Spigot page (*Soon*)
-- ~~Discord~~ Please do **not** ask for support with this fork on AuthMeReloaded Discord.
+- ~~Discord~~ (None at the moment)
+> [!CAUTION]
+> Please do **not** ask for support with this fork on AuthMeReloaded Discord.
 
 ## Requirements
 
