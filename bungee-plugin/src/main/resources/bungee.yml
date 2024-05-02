@@ -1,4 +1,4 @@
-name: ${project.name}
+name: AuthMeProxy
 main: io.github.defective4.authmeproxy.bungee.AuthMeBungee
 version: ${project.version}
 author: AuthMeTeam

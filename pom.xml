@@ -16,6 +16,7 @@
         <module>bungee-plugin</module>
         <module>common</module>
         <module>velocity-plugin</module>
+        <module>bukkit-bridge</module>
     </modules>
 
     <scm>

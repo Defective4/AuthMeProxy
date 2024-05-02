@@ -9,12 +9,11 @@ import com.velocitypowered.api.event.command.CommandExecuteEvent;
 import com.velocitypowered.api.event.connection.DisconnectEvent;
 import com.velocitypowered.api.event.connection.PostLoginEvent;
 import com.velocitypowered.api.event.player.PlayerChatEvent;
-import com.velocitypowered.api.event.player.ServerConnectedEvent;
+import com.velocitypowered.api.event.player.ServerPostConnectEvent;
 import com.velocitypowered.api.event.player.ServerPreConnectEvent;
 import com.velocitypowered.api.proxy.Player;
 import com.velocitypowered.api.proxy.ServerConnection;
 import com.velocitypowered.api.proxy.messages.MinecraftChannelIdentifier;
-import com.velocitypowered.api.proxy.server.RegisteredServer;
 import com.velocitypowered.api.proxy.server.ServerInfo;
 import io.github.defective4.authmeproxy.common.config.BungeeConfigProperties;
 import io.github.defective4.authmeproxy.common.config.SettingsDependent;
@@ -140,9 +139,11 @@ public class BungeePlayerListener implements SettingsDependent {
     }
 
     @Subscribe(order = PostOrder.FIRST)
-    public void onPlayerConnectedToServer(final ServerConnectedEvent event) {
+    public void onPlayerConnectedToServer(final ServerPostConnectEvent event) {
         final Player player = event.getPlayer();
-        final RegisteredServer server = event.getServer();
+        final Optional<ServerConnection> serverOP = player.getCurrentServer();
+        if (serverOP.isEmpty()) return;
+        ServerConnection server = serverOP.get();
         final AuthPlayer authPlayer = authPlayerManager.getAuthPlayer(player);
         final boolean isAuthenticated = authPlayer != null && authPlayer.isLogged();
 
@@ -153,7 +154,7 @@ public class BungeePlayerListener implements SettingsDependent {
                 out.writeUTF("AuthMe.v2");
                 out.writeUTF("perform.login");
                 out.writeUTF(event.getPlayer().getUsername());
-                server.sendPluginMessage(MinecraftChannelIdentifier.from("BungeeCord"), out.toByteArray());
+                server.sendPluginMessage(MinecraftChannelIdentifier.from("authme:internal"), out.toByteArray());
             }
         }
     }
@@ -182,8 +183,7 @@ public class BungeePlayerListener implements SettingsDependent {
         if (isServerSwitchRequiresAuth) {
             event.setResult(ServerPreConnectEvent.ServerResult.denied());
 
-            Component reasonMessage = Component.text(requiresAuthKickMessage)
-                                               .color(NamedTextColor.RED);
+            Component reasonMessage = Component.text(requiresAuthKickMessage).color(NamedTextColor.RED);
 
             // Handle race condition on player join on a misconfigured network
             if (player.getCurrentServer().isEmpty()) {

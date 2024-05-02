@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>io.github.defective4.authmeproxy</groupId>
+        <artifactId>AuthMeProxy</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <artifactId>bukkit-bridge</artifactId>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <repositories>
+        <repository>
+            <id>codemc-repo</id>
+            <url>https://repo.codemc.org/repository/maven-public/</url>
+        </repository>
+    </repositories>
+
+    <build>
+        <resources>
+            <resource>
+                <filtering>true</filtering>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>libs</groupId>
+            <artifactId>paper-api</artifactId>
+            <version>1.16</version>
+            <scope>system</scope>
+            <systemPath>/shared/pliki/Pliki/Minecraft/Serwery/_Pluginy itp_/api/api_1.16.5.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>fr.xephi</groupId>
+            <artifactId>authme</artifactId>
+            <version>5.6.0-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+</project>

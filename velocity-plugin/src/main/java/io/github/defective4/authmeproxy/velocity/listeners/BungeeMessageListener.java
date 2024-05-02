@@ -6,7 +6,7 @@ import com.google.common.io.ByteStreams;
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.connection.PluginMessageEvent;
 import com.velocitypowered.api.proxy.Player;
-import com.velocitypowered.api.proxy.ProxyServer;
+import com.velocitypowered.api.proxy.ServerConnection;
 import io.github.defective4.authmeproxy.common.config.BungeeConfigProperties;
 import io.github.defective4.authmeproxy.common.config.SettingsDependent;
 import io.github.defective4.authmeproxy.velocity.AuthMeVelocity;
@@ -38,49 +38,40 @@ public class BungeeMessageListener implements SettingsDependent {
 
     @Subscribe
     public void onPluginMessage(PluginMessageEvent event) {
-        System.out.println(event.getIdentifier().getId());
-//        if (!event.getResult().isAllowed()) {
-//            return;
-//        }
-
-        // Check if the message is for a server (ignore client messages)
-        if (!event.getIdentifier().getId().equals("BungeeCord")) {
+        if (!event.getResult().isAllowed()) {
             return;
         }
 
+        // Check if the message is for a server (ignore client messages)
+        if (!event.getIdentifier().getId().equals("authme:internal")) {
+            return;
+        }
+        event.setResult(PluginMessageEvent.ForwardResult.handled());
+
         // Check if a player is not trying to send us a fake message
-        if (!(event.getSource() instanceof ProxyServer)) {
+        if (!(event.getSource() instanceof ServerConnection)) {
+            if (event.getSource() instanceof Player player) AuthMeVelocity.getInstance()
+                                                                          .getLogger()
+                                                                          .warn(player.getUsername() + " tried to spoof AuthMe plugin message!");
             return;
         }
 
         // Read the plugin message
         final ByteArrayDataInput in = ByteStreams.newDataInput(event.getData());
 
-        // Accept only broadcasts
-        if (!in.readUTF().equals("Forward")) {
-            return;
-        }
-        in.readUTF(); // Skip ONLINE/ALL parameter
-
         // Let's check the subchannel
         if (!in.readUTF().equals("AuthMe.v2.Broadcast")) {
             return;
         }
 
-        // Read data byte array
-        final short dataLength = in.readShort();
-        final byte[] dataBytes = new byte[dataLength];
-        in.readFully(dataBytes);
-        final ByteArrayDataInput dataIn = ByteStreams.newDataInput(dataBytes);
-
         // For now that's the only type of message the server is able to receive
-        final String type = dataIn.readUTF();
+        final String type = in.readUTF();
         switch (type) {
             case "login":
-                handleOnLogin(dataIn);
+                handleOnLogin(in);
                 break;
             case "logout":
-                handleOnLogout(dataIn);
+                handleOnLogout(in);
                 break;
         }
     }

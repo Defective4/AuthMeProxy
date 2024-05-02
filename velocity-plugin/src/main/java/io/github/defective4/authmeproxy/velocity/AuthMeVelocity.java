@@ -12,6 +12,7 @@ import com.velocitypowered.api.plugin.PluginManager;
 import com.velocitypowered.api.plugin.annotation.DataDirectory;
 import com.velocitypowered.api.proxy.Player;
 import com.velocitypowered.api.proxy.ProxyServer;
+import com.velocitypowered.api.proxy.messages.MinecraftChannelIdentifier;
 import io.github.defective4.authmeproxy.common.annotations.DataFolder;
 import io.github.defective4.authmeproxy.common.config.BungeeConfigProperties;
 import io.github.defective4.authmeproxy.common.config.BungeeSettingsProvider;
@@ -29,6 +30,7 @@ import java.nio.file.Path;
 public class AuthMeVelocity {
 
     private static ProxyServer staticServer;
+    private static AuthMeVelocity INSTANCE;
     private final Logger logger;
     private final ProxyServer proxy;
     private final File dataFolder;
@@ -39,10 +41,15 @@ public class AuthMeVelocity {
 
     @Inject
     public AuthMeVelocity(Logger logger, ProxyServer proxy, @DataDirectory Path dataPath) {
+        INSTANCE = this;
         this.logger = logger;
         this.proxy = proxy;
         this.dataFolder = dataPath.toFile();
         staticServer = proxy;
+    }
+
+    public static AuthMeVelocity getInstance() {
+        return INSTANCE;
     }
 
     public static ProxyServer getProxyServer() {
@@ -86,6 +93,7 @@ public class AuthMeVelocity {
         getProxy().getEventManager().register(this, injector.getSingleton(BungeeMessageListener.class));
         getProxy().getEventManager().register(this, injector.getSingleton(BungeePlayerListener.class));
 
+        getProxy().getChannelRegistrar().register(MinecraftChannelIdentifier.from("authme:internal"));
         // Send metrics data
         //        new Metrics(this, 1880);
     }
