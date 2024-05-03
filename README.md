@@ -8,7 +8,7 @@ Brings AuthMe support to your BungeeCord **and** Velocity servers!
 * [Changes from AuthMeBungee](#changes-from-authmebungee)
 * [Support](#support)
 * [Requirements](#requirements)
-* Downloads (*Soon*)
+* [Downloads](#downloads)
 * [Installation](#installation)
 * [API Excamples](#api) (*Soon*)
 
@@ -44,7 +44,7 @@ This includes:
 ## Support
 
 - [GitHub issue tracker](https://github.com/Defective4/AuthMeProxy/issues)
-- Spigot page (*Soon*)
+- [Spigot page](https://www.spigotmc.org/resources/authmeproxy.116570/)
 - ~~Discord~~ (None at the moment)
 
 > [!CAUTION]
@@ -65,6 +65,9 @@ This includes:
 **Bukkit Bridge for Velocity**
 
 - Spigot or any of its forks (Tested on Paper and Purpur 1.12+, any version above 1.7 should work)
+
+## Downloads
+You can download latest release on the [releases](https://github.com/Defective4/AuthMeProxy/releases/tag/latest) page
 
 ## Installation
 
