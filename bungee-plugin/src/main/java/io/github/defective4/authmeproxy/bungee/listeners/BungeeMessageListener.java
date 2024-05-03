@@ -8,6 +8,7 @@ import io.github.defective4.authmeproxy.bungee.services.BungeeAuthPlayerManager;
 import io.github.defective4.authmeproxy.common.config.ProxyConfigProperties;
 import io.github.defective4.authmeproxy.common.config.SettingsDependent;
 import net.md_5.bungee.api.ProxyServer;
+import net.md_5.bungee.api.config.ServerInfo;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.connection.Server;
 import net.md_5.bungee.api.event.PluginMessageEvent;
@@ -101,7 +102,8 @@ public class BungeeMessageListener implements Listener, SettingsDependent {
             if (isSendOnLogoutEnabled) {
                 final ProxiedPlayer player = authPlayer.getPlayer();
                 if (player != null) {
-                    player.connect(ProxyServer.getInstance().getServerInfo(sendOnLogoutTarget));
+                    ServerInfo serverInfo = ProxyServer.getInstance().getServerInfo(sendOnLogoutTarget);
+                    if (serverInfo != null) player.connect(serverInfo);
                 }
             }
         }
