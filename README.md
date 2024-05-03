@@ -10,7 +10,7 @@ Brings AuthMe support to your BungeeCord **and** Velocity servers!
 * [Requirements](#requirements)
 * Downloads (*Soon*)
 * [Installation](#installation)
-* [API](#api) (*Soon*)
+* [API Excamples](#api) (*Soon*)
 
 ## About
 
@@ -69,7 +69,7 @@ This includes:
 ## Installation
 
 **BungeeCord**  
-This part of is mostly the same as with original AuthMeBungee
+This part is mostly the same as with original AuthMeBungee
 
 1. Download AuthMeProxy-Bungee-`x.x`.jar package
 2. Place AuthMeProxy-Bungee-`x.x`.jar into your BungeeCord's plugins folder
